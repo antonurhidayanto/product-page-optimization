@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Product Page Optimization
 
-## Getting Started
+## Description (English)
+This project is a Next.js application for displaying product details with optimized UI and performance.
 
-First, run the development server:
+### Features
+- Display product list and details
+- Product image carousel
+- Stock indicator
+- Back navigation with arrow icon
 
+### How to Run
+
+#### 1. Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd product-page-optimization
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### 2. Install Dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### 3. Start Development Server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Access the app at [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+#### 4. Important Folder Structure
+- `src/app/products/[id]/page.tsx` — Product detail page
+- `src/app/utils/api.ts` — Product data fetching function
 
-To learn more about Next.js, take a look at the following resources:
+### Notes
+- Ensure the `/api/products` endpoint is available and responsive.
+- For optimal performance, use pagination and caching in the API.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Troubleshooting
+If the API is slow, check:
+- Database connection
+- Query and indexing
+- Cache implementation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Deskripsi (Bahasa Indonesia)
+Project ini adalah aplikasi Next.js untuk menampilkan detail produk dengan tampilan dan performa yang dioptimalkan.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Fitur
+- Menampilkan daftar dan detail produk
+- Carousel gambar produk
+- Indikator stok produk
+- Navigasi kembali dengan ikon panah
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Cara Menjalankan
+
+#### 1. Clone Repository
+```bash
+git clone <url-repo-anda>
+cd product-page-optimization
+```
+
+#### 2. Install Dependencies
+```bash
+npm install
+```
+
+#### 3. Jalankan Development Server
+```bash
+npm run dev
+```
+
+Akses aplikasi di [http://localhost:3000](http://localhost:3000).
+
+#### 4. Struktur Folder Penting
+- `src/app/products/[id]/page.tsx` — Halaman detail produk
+- `src/app/utils/api.ts` — Fungsi fetch data produk
+
+### Catatan
+- Pastikan endpoint `/api/products` tersedia dan responsif.
+- Untuk performa optimal, gunakan pagination dan caching pada API.
+
+### Troubleshooting
+Jika API lambat, cek:
+- Koneksi database
+- Query dan indexing
+- Implementasi cache
+
+---
+
+**Happy coding! / Selamat berkarya!**
