@@ -35,11 +35,14 @@ const ProductsPage = () => {
         <h1 className="text-3xl font-bold text-center mb-6">Our Products</h1>
         <div className="flex justify-between items-center mb-6">
             <select onChange={(e) => setCategoryFilter(e.target.value)}>
-                <option value="">All Category</option>
-                <option value="electronics">Electronics</option>
-                <option value="clothing">Clothing</option>
-                <option value="books">Books</option>
-                <option value="furniture">Furniture</option>
+                <option value="">All Categories</option>
+                {Array.from(new Set(products.map((product) => product.category))).map(
+                    (category) => (
+                    <option key={category} value={category}>
+                        {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </option>
+                    )
+                )}
             </select>
             <select onChange={(e) => setSortOrder(e.target.value)}>
                 <option value="asc">Price: Low to High</option>
