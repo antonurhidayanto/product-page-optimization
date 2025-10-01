@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const ProductsPage = () => {
 
@@ -9,7 +9,7 @@ const ProductsPage = () => {
         price: number;
     }
 
-    // const [products, setProducts] = useState([])
+    const [products, setProducts] = useState<Product[]>([])
     
     useEffect(() => {
         const fetchProducts = async () => {
