@@ -1,8 +1,8 @@
-"useClient";
+"use client";
 
 import getProducts from "@/app/utils/api";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useRouter,useParams } from "next/navigation";
+import { use, useEffect, useState } from "react";
 
 interface Product {
     id: number;
@@ -12,7 +12,7 @@ interface Product {
     images: string[];
     title: string;
     description: string;
-    inStock: boolean;
+    stock: number;
 }
 
 interface ProductCarouselProps {
@@ -20,18 +20,18 @@ interface ProductCarouselProps {
 }
 
 const ProductDetailPage = () => {
-
-
     const router = useRouter();
-    const { id } = router.query;
+    const { id } = useParams();
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProduct = async () => {
       const products = await getProducts();
-      const selectedProduct = products.find((product: Product) => product.id === Number(id));
-      setProduct(selectedProduct);
+      console.log("fetched products",products)
+      const selectedProduct = products.products.find((product: Product) => product.id === Number(id));
+      console.log("selected product",selectedProduct);
+      setProduct(selectedProduct || null);
       setLoading(false);
     };
 
@@ -50,7 +50,26 @@ const ProductDetailPage = () => {
   return (
     <div className="container mx-auto p-6">
       <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-lg p-6">
+        <div className="flex justify-between items-center mb-4">
         <h1 className="text-3xl font-bold text-gray-800">{product.title}</h1>
+        <button
+                        onClick={() => router.back()}
+                        aria-label="Go back"
+                        className="mr-2 p-2 rounded hover:bg-gray-100"
+                    >
+                        {/* Arrow Left SVG */}
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-6 h-6 text-gray-700"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+        </button>
+        </div>
         <div className="mt-4">
           <ProductCarousel images={product.images} />
         </div>
@@ -60,10 +79,11 @@ const ProductDetailPage = () => {
           <p className="text-lg font-semibold text-gray-900">${product.price}</p>
           <p
             className={`text-sm font-medium ${
-              product.inStock ? "text-green-600" : "text-red-600"
+              product.stock ? "text-green-600" : "text-red-600"
             }`}
           >
-            {product.inStock ? "In stock" : "Out of stock"}
+            {product.stock ? "In stock" : "Out of stock"}
+            {product.stock ? ` (${product.stock} available)` : ""}
           </p>
         </div>
       </div>
